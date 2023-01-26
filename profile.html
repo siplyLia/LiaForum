@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <link rel="stylesheet" href="css/profile.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Профіль користувача</title>
+    <script src="js/timer.js"></script>
+    <script src="js/UserLogic.js"></script>
+    <script src="js/Comments.js"></script>
+</head>
+<body>
+  <footer class="general">
+    <p>
+      <div id="logodiv"><a href="index.html" target="_parent"><img></a></div>
+      <a href="autorization.html" target="_parent">
+        <button class="button">Увійти/Зареєструватись</button>
+      </a>
+      <span id="timer">
+        <font size="4" color="red" face="Wingdings">v </font><span id="time">00:00:00</span>
+      </span>
+    </p>
+  </footer>
+
+  <div class="mode"><img class="btn-toggle" id="image" src="img/light mode.png" width="80px" height="41px"></div>
+
+  <div id = "stylesheet" style="margin: 5% 40% 70px 5%;">
+    <img class="back"></img>
+    <div class="stylesheet-block" color="white">
+      <img class="avatar"></img>
+      <h1 id="profile-name"></h1>
+    </div>
+    <div id="user-comments">
+      <h2>Мої коментарі:</h2>
+    </div>
+  </div>
+        
+
+  <script language="javascript">
+    document.getElementsByClassName("back")[0].src = myUser.userProfile.backgroundUrl
+    document.getElementsByClassName("avatar")[0].src = myUser.userProfile.iconUrl
+    document.getElementById("profile-name").innerText = myUser.name
+
+
+    function fillComments() {
+      var stylesheet = document.getElementById("user-comments")
+      for (var i=commentsList.length-1; i>=0; i--)
+        if (commentsList[i].userId == myUser.id) {
+        var toCommentLink = document.createElement('a')
+        toCommentLink.className = "link"
+        toCommentLink.href = "Header.html#" + commentsList[i].postId
+        var commentsBlock = document.createElement('div')
+        commentsBlock.className = "stylesheet-block"
+        var userName = document.createElement('span')
+        userName.innerText = commentsList[i].comment
+        commentsBlock.append(userName)
+        toCommentLink.append(commentsBlock)
+        stylesheet.append(toCommentLink)
+      }
+    }
+    fillComments()
+
+
+    var isDarkMode = false;
+    const dark = "img/dark mode.png"
+    const light= "img/light mode.png"
+      
+    document.querySelector(".btn-toggle").addEventListener("click", function () {
+    document.body.classList.toggle("dark-theme");
+    document.querySelector(".general").classList.toggle('Dark-theme');
+    document.querySelector("#stylesheet").classList.toggle('Dark-theme');
+    document.querySelector("#logodiv").classList.toggle('Dark-theme');
+    var stylesheetblock = $(".stylesheet-block");
+    for(var i=0; i<stylesheetblock.length; i++)
+      stylesheetblock[i].classList.toggle('Dark-theme');
+      
+    if (isDarkMode) {
+      isDarkMode = false
+      document.getElementById("image").src = light
+    }
+    else {
+      isDarkMode = true
+      document.getElementById("image").src = dark
+    }
+  });
+
+  
+  $(".link").click(function(){
+    var elementId=$(this).attr('href').substring(1);
+    document.getElementsByClassName("selected-stylesheet-block")[0].classList.replace('selected-stylesheet-block', 'unselected-stylesheet-block');
+    document.getElementById(elementId).classList.replace('unselected-stylesheet-block', 'selected-stylesheet-block');
+    if (elementId!=homepage)
+      $(elementId).append(commentlock);
+  });
+</script>
+</body>
+</html>

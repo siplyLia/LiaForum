@@ -1,0 +1,379 @@
+.general {
+    border-top: solid 2px #808080;
+    opacity: 0.9;
+    transition: 0.5s;
+    background: silver;
+    margin-top: -100px;
+    height: 80px;
+    color: #60C;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    padding-right: 20%;
+    padding-left: 20%;
+    padding-top: 0.7%;
+    padding-bottom: 5%;
+    background-image: url("light theme.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #000000;
+} 
+
+body.dark-theme {
+    color: #eee;
+    background-image: url("https://cdn.discordapp.com/attachments/798288758830530573/1025303050417606697/dark_theme.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#timer {
+    color: #ffffff; 
+    margin: 4px 9% 0 0; 
+    font-size: 14pt; 
+    border: 2px solid #808080; 
+    background: #000000;
+    padding: 10px; 
+    padding-left: 0; 
+    float: right; 
+    border-radius: 15px;
+}
+#logodiv {
+    margin-left: 3%;
+    margin-right: 7%;
+    float: left;
+    transition: 0.7s;
+    filter: invert(100%); 
+}
+#logodiv img {
+    content: url("/img/logo.png");
+    width: 80px;
+    height: 50px;
+    margin-left: 20%;
+}
+#logodiv.Dark-theme {
+    transition: 0.5s;
+    filter: invert(0%); 
+}
+#logodiv:hover {
+    transform: scale(1.1);
+}
+#daynight {
+    position: relative;
+    display: inline-block;
+    background-color: black;
+    margin: 4px 10px;
+}
+.button:hover {
+    animation: animate 8s linear infinite;
+}
+.button:before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    bottom: -5px;
+    left: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+    border-radius: 40px;
+    opacity: 0;
+    transition: .5s;
+}
+
+.button:hover:before {
+    filter: blur(20px);
+    opacity: 1;
+    animation: animate 8s linear infinite;
+}
+
+.button {
+    position: relative;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    line-height: 40px;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    font-family: sans-serif;
+    background-color: #808080;
+    border-radius: 15px;
+    z-index: 1;
+    display: inline-block;
+    margin: 4px 10px;
+    border: 2px solid #808080;
+}
+.general:hover {
+    opacity: 1;
+}
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 30px transparent;
+    background: black;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: #3c3c3c;
+}
+#myBtn {
+    position: fixed;
+    top: 15%;
+    float: right;
+    left: 85%;
+    max-width: 30px;
+    width: 100%;
+    border: 0;
+}
+
+.mode {
+    transition: filter 1s;
+    position: fixed;
+    top: 5%;
+    float: left;
+    right: 11%;
+    max-width: 30px;
+    width: 100%;
+    border: 0;
+    transition: 1s;
+  }
+
+#stylesheet {
+    border: 1px solid rgb(0, 0, 0);
+    background-color: #a19b7bbd;
+    z-index: -2;
+    padding: 15px 15px 20px 15px;
+    min-height: 300px;
+}
+
+
+#fixedrightmenu {
+    width: auto;
+    margin-top: 30px;
+    background-color:rgb(219, 203, 203);
+    padding: 40px 0 40px 0;
+    top: 30px;
+    outline: 3px solid gray;
+}
+#fixedrightmenu.Dark-theme {
+    background-color: rgb(46, 36, 36);
+}
+
+#centerblock {
+    background-color: #f0e6b8bd;
+    width: 10%;
+    display:table-cell;
+}
+
+#rightblock {
+    width: 22.5%;
+    height: auto;
+    vertical-align: top;
+    display:table-cell;
+}
+.Dark-theme {
+    background: rgb(46, 36, 36);
+    transition: 0.5s;
+}
+.stylesheet-block {
+    background-color:rgba(192, 192, 192, 0.877);
+    margin: 15px 15px 15px 15px;
+    padding: 40px 30px 40px 30px;
+    align-self: center;
+    text-decoration:none;
+    transition: 0.3s;
+}
+
+.stylesheet-block.Dark-theme {
+    background-color: rgb(19, 18, 18);
+    transition: 0.3s;
+}
+#homepage .stylesheet-block:hover, #user-comments .stylesheet-block:hover {
+    outline: 2px solid gray;
+}
+#homepage .stylesheet-block.Dark-theme:hover, #user-comments .stylesheet-block.Dark-theme:hover {
+    outline: 2px solid white;
+}
+.stylesheet-block img {
+    max-width: 500px;
+    max-height: 500px;
+    align-self: center;
+}
+
+span, a {text-decoration: none !important;}
+.stylesheet-block span, p {
+    color: black;
+}
+.stylesheet-block.Dark-theme span {
+    color: whitesmoke;
+}
+.unselected-stylesheet-block {
+    display: none;
+}
+.selected-stylesheet-block {
+    display: block;
+}
+.link {
+    font: optional;
+}
+.link .filter-button {
+    width: 90%;
+    height: 30px;
+    margin: 5%;
+    margin-bottom: 0px;
+    
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: gray;
+}
+@media screen and (max-width:900px) {
+    .general {
+        display: none;
+    }
+    #rightmenu {
+        display: none;
+    }
+    #fixedrightmenu {
+        display: none;
+    }
+    #stylesheet {
+        margin-bottom: 0;
+    }
+}
+.autorizationmenu {
+    margin: 10% auto auto auto;
+    width: 300px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.logreg {
+    height: 370px;
+    z-index: -2;
+    padding: 15px 15px 20px 15px;
+    min-height: 300px;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><style>@keyframes dashes{to{stroke-dasharray: 50 10}}@keyframes marching-ants{to{stroke-dashoffset: -60px; }}</style><linearGradient id="g" gradientTransform="rotate(45)"><stop stop-color="gold" /><stop stop-color="%230ac" offset="1" /></linearGradient><rect width="100%" height="100%" stroke="url(%23g)" stroke-width="10" stroke-dasharray="200 0" fill="none" style="animation: dashes 3s 2s forwards, marching-ants 1s 2.1s linear infinite;" /></svg>');
+    background-color: black;
+    color: white;
+}
+.logreg #LogIn div, .logreg #Register div {
+    min-height: 240px;
+}
+
+input[type=submit], .dropbtn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 7px 8px;
+    background-color: gray;
+    margin-top: 10px;
+}
+input[type=submit] {
+    margin-left: 10px;
+    min-width: 80px;
+}
+.dropbtn:hover {
+    background-color: orangered;
+}
+input[type=submit], .dropbtn:focus, .filter-button:focus {
+    background-color: red;
+}
+input[type=submit]:hover, .filter-button:hover {
+    background-color: rgb(220, 0, 0);
+}
+input[type=text] {
+    border: 0;
+    outline: 0;
+    width: 80%;
+    padding: 7px 8px;
+    background-color: white;
+}
+input[type=password] {
+    border: 0;
+    outline: 0;
+    width: 80%;
+    padding: 7px 8px;
+    background-color: white;
+}
+input[type=text].Dark-theme {
+    background-color: black;
+    color: white;
+}
+input[type=submit].Dark-theme, .filter-button.Dark-theme {
+    transition: none;
+    background-color: rgb(77, 76, 76);
+    color: white;
+}
+input[type=submit].Dark-theme:hover, .filter-button.Dark-theme:hover {
+    background-color: rgb(51, 51, 51);
+}
+table#comments, table#comments tr, table#comments td {
+    border: 3px solid gray;
+    padding: 5px 20px 6px 20px;
+    border-collapse: collapse;
+}
+table#comments {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+}
+table#comments.Dark-theme {
+    background-color: black;
+}
+.avatar {
+    clip-path: circle(75px);
+    margin-top: -155px;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    /*line-height: 200px;*/
+    /*text-align: center;*/
+}
+  
+.avatar img {
+    min-height: 200px;
+    min-width: 300px;
+    vertical-align: middle;
+} 
+.back {
+    overflow: hidden;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.back img {
+    min-height: 200px;
+    min-width: 100%;
+    vertical-align: middle;
+}
+#stylesheet.Dark-theme {    
+    background: rgb(46, 36, 36);
+    /* border-top: 3px solid silver; */
+}
+.like {
+    width: 35px;
+    transform: translateY(5px);
+}
+.likebox {
+    color: #000000;
+    font-size: 30px;
+}
+#profile-name {
+    margin-left: 20px;
+    margin-top: -20px;
+}

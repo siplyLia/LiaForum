@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <link rel="stylesheet" href="css\general_style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Головна</title>
+    <script src="js/timer.js"></script>
+</head>
+<body>
+  <footer class="general">
+    <p>
+      <div id="logodiv"><a href="index.html" target="_parent"><img></a></div>
+      <a href="profile.html" target="_parent">
+        <button class="button">Профіль</button>
+      </a>
+      <a href="autorization.html" target="_parent">
+        <button class="button">Увійти/Зареєструватись</button>
+      </a>
+      <span id="timer">
+        <font size="4" color="red" face="Wingdings">v </font><span id="time">00:00:00</span>
+      </span>
+    </p>
+  </footer>
+  <div class="mode"><img class="btn-toggle" id="image" src="img/light mode.png" width="80px" height="41px"></div>
+  
+  <div id="workspace">
+      <div id="leftblock">
+        <div id="fixedrightmenu">
+          <a href="#homepage" class="link"><button class="button" onclick="bubbleSortByGameName()">Сортувати за назвою гри</button></a>
+          <a href="#homepage" class="link"><button class="button" onclick="bubbleSortById()">Сортувати за датою додавання</button></a>
+          <a href="#homepage" class="link"><button class="button" onclick="bubbleSortByLikes()">Сортувати за кількістю лайків</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/cookie.js"></script>
+  <script src="js/UserLogic.js"></script>
+  <script src="js/Comments.js"></script>
+  <script src="js/PostLogic.js"></script>
+  <script lang="javascript">
+    var openedHref
+    document.addEventListener('DOMContentLoaded', function() {
+      openedHref = getCookie("openedHref")
+      if (openedHref != null) {
+          document.getElementsByClassName("selected-stylesheet-block")[0].classList.replace('selected-stylesheet-block', 'unselected-stylesheet-block');
+          document.getElementById(openedHref).classList.replace('unselected-stylesheet-block', 'selected-stylesheet-block');
+          openedHref = ""
+          var x = $(".send-comment")
+          x.click(function(){
+            var commentLines = document.getElementsByName("comment_line")
+            if (commentLines.innerText.length != 0) {
+                var commentLineText = $("comment_line")[openedHref].val().trim()
+                commentsList.push(new Comment(openedHref, myUser.id, commentLineText))
+                fillComments(openedHref)
+            }
+
+            fillPosts()
+          })
+        }
+    }, false)
+  </script>
+</body>
+</html>

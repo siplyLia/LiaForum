@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <link rel="stylesheet" href="css\general_style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="shortcut icon" href="l-initial-letter-with-joystick-shape-free-vector.ico" type="image/x-icon">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Вхід/реєстрація</title>
+  <script src="js/UserLogic.js"></script>
+  <script src="js/cookie.js"></script>
+</head>
+<body style="background-image: url('https://cdn.discordapp.com/attachments/798288758830530573/1027248614369673346/autorization_theme.jpg');">
+  <div class="autorizationmenu">
+    <div class = "logreg">
+      <div class = "selected-stylesheet-block" id="LogIn">
+        <h1>Вхід</h1>
+        <div>
+          <form>
+            <label for="mail">Електронна пошта:</label><br>
+            <input type="text" id="login-mail" name="mail" placeholder="Електронна пошта"><br>
+            <label for="password">Пароль:</label><br>
+            <input type="password" id="login-password" name="password" placeholder="Пароль"><br>
+            <input type="submit" value="Увійти" id="login-button" class="dropbtn">
+          </form>
+        </div>
+        <a href="#Register" class="link"><button class="button">Зареєструватись</button></a>
+      </div>
+      
+      <div class = "unselected-stylesheet-block" id="Register">
+        <h1>Вхід</h1>
+        <div>
+          <form>
+            <label for="mail">Електронна пошта:</label><br>
+            <input type="text" id="register-mail" name="mail" placeholder="Електронна пошта"><br>
+            <label for="name">Логін:</label><br>
+            <input type="text" id="register-name" name="name" placeholder="Логін"><br>
+            <label for="password">Пароль:</label><br>
+            <input type="password" id="register-password" name="password" placeholder="Пароль"><br>
+            <label for="password2">Повторіть пароль:</label><br>
+            <input type="password" id="register-password2" name="password" placeholder="Пароль"><br>
+            <input type="submit" value="Зареєструватись" id="register-button" class="dropbtn">
+          </form>
+        </div>
+        <a href="#LogIn" class="link"><button class="button">Увійти</button></a>
+      </div>
+    </div>
+  </div>
+
+  <script language="javascript">
+    var openedHref
+    
+    // document.addEventListener('DOMContentLoaded', function() {
+    //   openedHref = getCookie("openedHref")
+    //   if (openedHref != null) {
+    //       document.getElementsByClassName("selected-stylesheet-block")[0].classList.replace('selected-stylesheet-block', 'unselected-stylesheet-block');
+    //       document.getElementById(openedHref).classList.replace('unselected-stylesheet-block', 'selected-stylesheet-block');
+    //       openedHref = ""
+    //     }
+    // }, false)
+    
+    $("#login-button").on("click", function(){
+        let loginMail = $("#login-name").val().trim()
+        let loginPassword = $("#login-password").val().trim()
+
+        myUser.setUser("Anonymus", loginMail, loginPassword).LogIn()
+    })
+    $("#register-button").on("click", function(){
+        let registerName = $("#register-name").val().trim()
+        let registerMail = $("#register-mail").val().trim()
+        let registerPassword = $("#register-password").val().trim()
+        let registerPassword2 = $("#register-password2").val().trim()
+
+        if (registerPassword == registerPassword2)
+            myUser.setUser(registerName, registerMail, registerPassword).SignIn()
+        else
+            confirm("Паролі не збігаються")
+    })
+
+
+  $(".link").click(function(){
+    var elementId=$(this).attr('href').substring(1);
+    document.getElementsByClassName("selected-stylesheet-block")[0].classList.replace('selected-stylesheet-block', 'unselected-stylesheet-block');
+    document.getElementById(elementId).classList.replace('unselected-stylesheet-block', 'selected-stylesheet-block');
+    openedHref = elementId
+    setCookie("openedHref", openedHref)
+  });
+</script>
+</body>
+</html>
