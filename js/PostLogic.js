@@ -254,18 +254,22 @@ function fillPosts() {
   postList = intermediateList
   fillPosts()
 }
-function bubbleSortByLikes() {
+
+  function insertSortByLikes() {
     var array = new Array()
+    alert(array)
     for(var i=0; i < postList.length; i++)
     array.push(postList[i].likes)
-    for(var i=0; i <= array.length-1; i++)
-      for(var j=0; j < array.length-i-1; j++)
-        if(array[j] > array[j+1]) {
-          var x = array[j]
-          array[j] = array[j + 1]
-          array[j+1] = x
-        }
-
+    for(var i=0; i < array.length; i++){
+      let x = array[i]
+      var j = i-1
+      while(j>=0 && array[j]>x){
+        array[j+1] = array[j]
+        j--
+      }
+      array[j+1] = x;
+    }
+alert(array)
   var intermediateList = new Array()
   for(var i = 0; i < array.length; i++)
     for(var j = 0; j < postList.length; j++)
@@ -273,7 +277,8 @@ function bubbleSortByLikes() {
         intermediateList.push(postList[j])
   postList = intermediateList
   fillPosts()
-}
+  }
+
   function bubbleSortById() {
     var array = new Array()
     for(var i=0; i < postList.length; i++)
